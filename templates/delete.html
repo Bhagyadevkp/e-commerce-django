@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form method="post">
+ {% csrf_token %}
+ are you sure u want to delete?
+<button onclick="myFunction()">OK</button>
+
+
+</form>
+
+<a href="/"><button >CANCEL</button></a>
+
+<script>
+function myFunction() {
+  confirm("Deleted successfully...");
+}
+</script>
+
+</body>
+</html>

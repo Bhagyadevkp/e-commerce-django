@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+    <section class="">
+
+
+        <div class="row p-5">
+            <h3 class="" style="padding-top:21px">products</h3>  
+	      {% if searchproduct %}
+             {% for i in searchproduct %}
+                {% for j in vars %}
+                {% if j is i.name %}
+
+             
+            <div class="col-md-2 col-sm-4 mt-5">
+                <a href="{% url 'singleproductdetail' i.prod_id %}" style="text-decoration: none;color: black">
+                    <div class="card bg-light" style="width: auto;border: none;">
+                        <img src="{{i.image1.url}}" style="width: 200px;height: 200px;border-radius: 30px;" class="img-fluid card-img-top" alt="...">
+                        <div class="card-body" style="height: 7rem;">
+                            <p class="card-text">{{i.name|truncatechars:18}}  <br>
+			                {% for g in o %}
+                            {% if g.shopname == i.title %}
+
+                              {{g.shopname|truncatechars:14}}<br>
+
+                            {% endif %}
+                            {% endfor %}
+
+
+
+			{% if i.offerprice %}
+			<strike>Rs: {{i.price}}</strike><br>
+			 Rs:  {{i.offerprice}}</p>
+			{% else %}
+			 Rs:  {{i.price}}</p>
+			{% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
+             <div style="height:5rem">
+            {% if p is 1 %}
+		<p>the searched product is not available.please type correctly</p>
+	   {% endif %}
+            </div>
+        </div>
+    </section>
+
+ <footer>
+        <div class="row">
+                <div class="row p-5">
+                    <div class="col-md-4">
+                        <h4 class="text-center" id="about">About Us</h4><br><br><br>
+                        <p class="text-center p-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                    </div>
+                    <div class="col-md-2">
+                        <h4 class="text-center">Links</h4><br><br><br>
+                        <ul class="list-unstyled list-inline text-center pt-4">
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-fb mx-1" href="">
+                                    <i class="fab fa-facebook-f"> </i>
+                                </a>
+                            </li><br><br><br><br><br><br>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-tw mx-1" href="">
+                                    <i class="fab fa-twitter"> </i>
+                                </a>
+                            </li><br><br><br><br><br><br>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-gplus mx-1" href="">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li><br>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-center">Our team</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="container">
+                                    <div class="card-wrapper">
+                                        <div id="card" class="card">
+                                            <div class="card-image">
+                                                <img class="img-fluid" src="https://image.ibb.co/dUTfmJ/profile_img.jpg" alt="profile one">
+                                            </div>
+                                            <ul class="social-icons">
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-dribbble"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="details">
+                                                <h2 style="font-size: 25px;">SALMAN<br><span class="job-title">Developer</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="container">
+                                    <div class="card-wrapper">
+                                        <div id="card" class="card">
+                                            <div class="card-image">
+                                                <img class="img-fluid" src="https://image.ibb.co/dUTfmJ/profile_img.jpg" alt="profile one">
+                                            </div>
+                                            <ul class="social-icons">
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-dribbble"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="details">
+                                                <h2 style="font-size: 25px;">BHAGYADEV<br><span class="job-title">Developer</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="container">
+                                    <div class="card-wrapper">
+                                        <div id="card" class="card">
+                                            <div class="card-image">
+                                                <img class="img-fluid" src="https://image.ibb.co/dUTfmJ/profile_img.jpg" alt="profile one">
+                                            </div>
+                                            <ul class="social-icons">
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-dribbble"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="details">
+                                                <h2 style="font-size: 25px;">AJAZ KHAN<br><span class="job-title">Developer</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright text-center py-2" style="background-color: gray;">© 2021 Merchbox. All Rights Reserved.
+                </div>
+        </div>
+    </footer>
+
+
+
+{% endblock %}

@@ -1,0 +1,1 @@
+web: gunicorn merchbox.wsgi --log-file -

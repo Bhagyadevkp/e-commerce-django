@@ -1,0 +1,143 @@
+
+  .main{
+    width: 100%;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+@media only screen and (min-width:1000px){
+.dropdown-menu{
+width:1700px;
+}}
+
+@media only screen and (man-width:412px){
+.dropdown-menu{
+width:auto;
+}}
+
+
+
+.wrapper{
+    width: 26%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-gap: 30px;
+}
+
+.left-col{
+    display: flex;
+    flex-direction: column;
+    width:266%
+}
+
+.status-wrapper{
+    padding-right: 19px;
+    margin-left: 6%;
+    width: 242%;
+    height: 140px;
+    background: #fff;
+
+    border-radius: 2px;
+    padding: 10px;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.status-wrapper::-webkit-scrollbar{
+    display: none;
+}
+
+.status-card{
+    flex: 0 0 auto;
+    width: 216px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0px;
+    margin-left:7%;
+}
+
+.profile-pic{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 3px;
+    background: linear-gradient(90deg, rgb(214, 211, 211), transparent);
+
+    box-shadow: 2px 0px 2px black;
+}
+
+.profile-pic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.username{
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    font-size: 12px;
+    margin-top:5px;
+    color: rgba(0, 0, 0, 0.5)
+}
+
+.categicon{
+    padding-left: 37%;
+    padding-top: 38%;}
+
+
+
+
+#drop
+
+ul.multi-column-dropdown {
+    text-align: left;
+}
+.multi-column-dropdown li a {
+    display: block;
+    clear: both;
+    line-height: 1.428571429;
+    color: #737373 !important;
+    white-space: normal;
+    font-size: 13px;
+}
+.multi-column-dropdown li a i{
+    margin-right:7px;
+}
+.multi-column-dropdown li {
+    list-style-type: none;
+    margin: 7px 0;
+}
+
+.multi-column-dropdown li a:hover {
+    color: #000 !important;
+}
+
+ul.multi-column-dropdown h6 {
+    font-size: 1.5em;
+    color: #000;
+    margin: 0 0 1em;
+    padding: 0.7em 0;
+    border-bottom: 2px solid #62BF43;
+    text-transform: capitalize;
+    font-family: 'Glegoo', serif;
+}
+
+.dropdown-menu.multi {
+    min-width: 745px;
+    padding: 30px 30px;
+}
+
+

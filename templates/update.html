@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+<!--    <link rel="stylesheet" href="addproduct.css" type="text/css">-->
+    <title>Add Product</title>
+    <script src="https://kit.fontawesome.com/645eb0c4d2.js" crossorigin="anonymous"></script>
+<style>
+*{
+    box-sizing: border-box;
+}
+
+body{
+    height: auto;
+    width: 100vw;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    background-color: #ecf0f3;
+}
+
+.login-div{
+    width: 430px;
+    height: auto;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background-color: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+    -13px -13px 20px #fff;
+
+}
+
+.title{
+    text-align: center;
+    font-size: 28px;
+    padding-top: 24px;
+    letter-spacing: 0.5px;
+}
+
+.fields{
+    width: 100%;
+    padding: 75px 5px 5px 5px;
+}
+
+.fields input{
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    color: #555;
+    padding: 20px 10px 20px 5px;
+}
+
+.product,.category,.description,.price,.location,.city,.dealer,.phone,.img{
+    margin-bottom: 30px;
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+    width:100%
+}
+
+.fiels svg{
+    height: 22px;
+    margin: 0 10px -3px 25px;
+}
+
+.submit-button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Lato", sans-serif;
+    color: #fff;
+    text-align: center;
+    background-color: #02c8db;
+    box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+    transition: all 0.5s;
+}
+
+.signin-button:hover{
+    background-color: #50e5b9;
+}
+
+.signin-button:active{
+    background-color: #88ef9e;
+}
+
+.link{
+    padding-top: 20px;
+    text-align: center;
+}
+
+.link a {
+    text-decoration: none;
+    color: #aaa;
+    font-size: 15px;
+}
+
+</style>
+
+</head>
+<body>
+    <div >
+        {% for message in messages %}
+        <h4>{{message}}</h4>
+        {% endfor %}
+    </div>
+    <div class="login-div">
+        <div class="logo"></div>
+        <div class="title">Add Products Here</div>
+        <form action="" method="POST" enctype="multipart/form-data" onsubmit="return confirm('Do you really want to submit the form?')">
+
+	     <div class="fields">
+             {% csrf_token %}
+                <div class="">
+                    <input type="text" name="name" maxlength="50" value="{{updateproduct.name}}" style="margin-left: -10px;" class="user-input product" placeholder="     Product Name" required="">
+                </div>
+
+                <div class="">
+                    <input type="text" name="desc" maxlength="200" value="{{updateproduct.desc}}" style="margin-left: -10px;" class="user-input description" placeholder="     Description" required="">
+                </div>
+                <div class="">
+                    <small>not editable:</small>
+                    <input type="text" name="category" maxlength="200" value="{{updateproduct.category}}" style="margin-left: -10px;" class="user-input description" placeholder="" required="" readonly>
+                </div>
+                <div class="">
+                    <small>not editable:</small>
+                    <input type="text" name="subcategory" maxlength="200" value="{{updateproduct.subcategory}}" style="margin-left: -10px;" class="user-input description" placeholder="" required="" readonly>
+                </div>
+                <div class="">
+                    <!-- <small>choose number from 1 - 100000</small><br> -->
+                    <input type="number" value="{{updateproduct.stock}}" min="1" onKeyPress="if(this.value.length==5) return false;" onkeydown="if(event.key==='.'){event.preventDefault();}"   pattern="[0-9]{5}" name="stock"  style="margin-left: -10px;" class="user-input price" placeholder="     stock" required="">
+                </div>
+                <div class="">
+                    <input type="number" value="{{updateproduct.price}}" min="1" onKeyPress="if(this.value.length==6)return false;"  onkeydown="if(event.key==='.'){event.preventDefault();}" pattern="[0-9]{8}" name="price" style="margin-left: -10px;" class="user-input price" placeholder="     Price" required="">
+                </div>
+                <div class="">
+                    <small>if required</small><br>
+                    <input type="number" value="{{updateproduct.offerprice}}" min="0" onKeyPress="if(this.value.length==6)return false;"  onkeydown="if(event.key==='.'){event.preventDefault();}" pattern="[0-9]{6}" name="offerprice" style="margin-left: -10px;" class="user-input location" placeholder="     offer price" >
+                </div>
+
+<!--                <div class="">-->
+<!--                    <input type="text" name="dealer" style="margin-left: -10px;" class="user-input dealer" placeholder="     Dealer Name"  required="">-->
+<!--                </div>-->
+<!--                <div class="">-->
+<!--                    <small>Format: 9946371099</small><br>-->
+<!--                    <input type="tel" pattern="[0-9]{10}" name="phonenumber"  style="margin-left: -10px;" class="user-input phone" placeholder="     Phone Number" required="">-->
+<!--                </div>-->
+                <div class="">
+                    <input type="file" name="image1" style="margin-left: -10px" class="user-input img"  placeholder="     Image" required="">
+                </div>
+                <div class="">
+                    <input type="file" name="image2" style="margin-left: -10px" class="user-input img"  placeholder="     Image Two">
+                </div>
+                <div class="">
+                    <input type="file" name="image3" style="margin-left: -10px" class="user-input img"  placeholder="     Image Three">
+                </div>
+                <div class="">
+                    <input type="file" name="image4" style="margin-left: -10px" class="user-input img" placeholder="     Image Four">
+                </div>
+                <button class="submit-button">Submit</button>
+            </div>
+        </form>
+                    {% if messages %}
+	                {% for message in messages %}
+					<center>{{message}}</center>
+					{% endfor %}
+                    {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

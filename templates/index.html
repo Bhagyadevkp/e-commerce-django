@@ -1,0 +1,846 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<style>
+    .main {
+        width: 100%;
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    @media only screen and (min-width:1000px) {
+        .dropdown-menu {
+            width: 1000px;
+        }
+    }
+
+    @media only screen and (max-width:412px) {
+        .dropdown-menu {
+            width: auto;
+        }
+    }
+
+    .wrapper {
+        width: 26%;
+        max-width: 1000px;
+        display: grid;
+        grid-template-columns: 60% 40%;
+        grid-gap: 30px;
+    }
+
+    .left-col {
+        display: flex;
+        flex-direction: column;
+        width: 266%
+    }
+
+    .status-wrapper {
+        padding-right: 19px;
+        margin-left: 6%;
+        background-image: url("https://amymhaddad.s3.amazonaws.com/morocco-blue.png");
+        height: 140px;
+        background: #fff;
+
+        border-radius: 2px;
+        padding: 10px;
+        padding-right: 0;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        overflow-x: auto;
+    }
+
+    .status-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .status-card {
+        flex: 0 0 auto;
+        width: 5rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0px;
+        margin-left: 7%;
+    }
+
+    .profile-pic {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 3px;
+        background: linear-gradient(90deg, rgb(214, 211, 211), transparent);
+
+        box-shadow: 2px 0px 2px black;
+    }
+
+    .profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid #fff;
+    }
+
+    .username {
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        font-size: 12px;
+        margin-top: 5px;
+        color: rgba(0, 0, 0, 0.5)
+    }
+
+    .categicon {
+        padding-left: 37%;
+        padding-top: 38%;
+    }
+
+
+
+
+
+    img {
+        vertical-align: middle;
+    }
+
+    /* Position the image container (needed to position the left and right arrows) */
+    .container {
+        position: relative;
+    }
+
+    /* Hide the images by default */
+    .mySlides {
+        display: none;
+    }
+
+    /* Add a pointer when hovering over the thumbnail images */
+    .cursor {
+        cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /* Container for image text */
+    .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Six columns side by side */
+    .column {
+        float: left;
+        width: 16.66%;
+    }
+
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+        opacity: 0.6;
+    }
+
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+
+    .seconddiv {
+        float: right;
+        margin-left: 12px;
+        width: 100%;
+        float: right;
+        margin-top: 4px;
+    }
+
+
+    .search {
+        margin-top: -38px;
+        padding-left: 48%;
+    }
+
+
+
+    .subcateg {
+        font-size: 16px;
+        color: red;
+        font-family: 'Roboto Mono';
+        font-weight: 400;
+    }
+
+    small:hover {
+        background-color: yellow;
+    }
+</style>
+</head>
+
+<body style="font-family: 'Roboto Mono', monospace;color: black;" class="bg-light">
+    <div class="row bg-light p-2" style="width: 100%;background-image: url();  background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;">
+
+
+
+
+
+
+
+
+        <div class="wrapper pt-2">
+            <div class="left-col" style="width: 630%;margin-left: 100px;margin-top:-13px">
+                <div class="status-wrapper"
+                    style="background-color:#f8f9fa;padding-top: 34px;width: 104%;margin-left: -71px;">
+                    <div class="status-card">
+
+
+
+
+                        <a class="nav-link" href="#" id="" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            <div class="profile-pic" style="margin-left:13px"><img src="{% static 'images/groceriesnew.jpg' %}"
+                                    alt=""></div>
+                            <p class="username nav-item dropdown" style="color: black; font-family: system-ui;">
+                                Groceries
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="margin-left: 5rem;margin-top: -36px; width: 11px;" width="16" height="16"
+                                    fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </p>
+
+
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for i in d %}
+                            {% if i.name == 'groceries' %}
+                            {% for j in e %}
+                            {% if j.maincategoryname.id is i.id %}
+                            <li class="subcateg"><a class="dropdown-item"
+                                    href="{% url 'filter' j.subcategoryname %}">{{j}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="status-card">
+                        <a class="nav-link " href="#" id="" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            <div class="profile-pic" style="margin-left:13px"><img
+                                    src="{% static 'images/costume.jpg' %}" alt=""></div>
+                            <p class="username" style="color: black;font-family: system-ui;">Costumes
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="margin-left: 5rem;margin-top: -36px; width: 11px;" width="16" height="16"
+                                    fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </p>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for i in d %}
+                            {% if i.name == 'costumes' %}
+                            {% for j in e %}
+                            {% if j.maincategoryname.id is i.id %}
+                            <li><a class="dropdown-item" href="{% url 'filter' j.subcategoryname %}">{{j}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="status-card">
+                        <a class="nav-link " href="#" id="" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            <div class="profile-pic" style="margin-left:13px"><img
+                                    src="{% static 'images/mobile.jpg' %}" alt=""></i></div>
+                            <p class="username" style="color:black;font-family: system-ui;">mobile
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="margin-left: 5rem;margin-top: -36px; width: 11px;" width="16" height="16"
+                                    fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </p>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for i in d %}
+                            {% if i.name == 'mobile' %}
+                            {% for j in e %}
+                            {% if j.maincategoryname.id is i.id %}
+                            <li><a class="dropdown-item" href="{% url 'filter' j.subcategoryname %}">{{j}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="status-card" style="padding-left:23px">
+                        <a class="nav-link " href="#" id="" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            <div class="profile-pic" style="margin-left:13px"><img src="{% static 'images/electronics.jpg' %}"
+                                    alt=""></i></div>
+                            <p class="username" style="color: black;font-family: system-ui;">Electronics
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="margin-left: 6rem;margin-top: -36px; width: 11px;" width="16" height="16"
+                                    fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </p>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for i in d %}
+                            {% if i.name == 'electronics' %}
+                            {% for j in e %}
+                            {% if j.maincategoryname.id is i.id %}
+                            <li><a class="dropdown-item" href="{% url 'filter' j.subcategoryname %}">{{j}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="status-card" style="padding-left:3px">
+                        <a class="nav-link" href="#" id="" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            <div class="profile-pic" style="margin-left:13px"><img src="{% static 'images/home.jpg' %}"
+                                    alt=""></i></div>
+                            <p class="username" style="color: black;font-family: system-ui;">Home
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="margin-left: 4rem;margin-top: -36px; width: 11px;" width="16" height="16"
+                                    fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </p>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for i in d %}
+                            {% if i.name == 'home' %}
+                            {% for j in e %}
+                            {% if j.maincategoryname.id is i.id %}
+                            <li><a class="dropdown-item" href="{% url 'filter' j.subcategoryname %}">{{j}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="status-card" style="padding-left: 25px;">
+                        <a class="nav-link " href="#" id="" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            <div class="profile-pic" style="margin-left:13px"><img
+                                    src="{% static 'images/wholesale.jpg' %}" alt=""></div>
+                            <p class="username" style="color: black;font-family: system-ui;">wholesales
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    style="margin-left: 6rem;margin-top: -36px; width: 11px;" width="16" height="16"
+                                    fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </p>
+                            </p>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for i in d %}
+                            {% if i.name == 'wholesales' %}
+                            {% for j in e %}
+                            {% if j.maincategoryname.id is i.id %}
+                            <li><a class="dropdown-item" href="{% url 'filter' j.subcategoryname %}">{{j}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="status-card" style="padding-left:3px">
+                        <a class="nav-link " href="#" id="" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            <div class="profile-pic" style="margin-left:13px"><img
+                                    src="{% static 'images/vehicles.jpg' %}" alt=""></div>
+                            <center>
+                                <p class="username" style="color: black;font-family: system-ui;">vehicles
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        style="margin-left: 5rem;margin-top: -36px; width: 11px;" width="16" height="16"
+                                        fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                    </svg>
+                                </p>
+                            </center>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for i in d %}
+                            {% if i.name == 'vehicles' %}
+                            {% for j in e %}
+                            {% if j.maincategoryname.id is i.id %}
+                            <li><a class="dropdown-item" href="{% url 'filter' j.subcategoryname %}">{{j}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <section class="">
+        {% if w %}  
+        <div class="row p-5">
+            <h3 class="text-center">BEST SELLING</h3>
+            {% for i in w %}
+            {% if i.productavailability == 1 %}
+            <div class="col-md-3 col-sm-4 mt-5 d-flex justify-content-center">
+                <a href="{% url 'detailprod' i.id  %}" style="text-decoration: none;color: black">
+                    <div class="card bg-light" style="width: auto;border: none;">
+                        {% if i.shopimage1 %}
+                        <img src="{{ i.shopimage1.url}}" style="width: 250px;height: 250px;border-radius: 30px;" class="img-fluid card-img-top" alt="...">
+                        {% endif %}
+                        <div class="card-body">
+                            <p class="card-text text-center">{{i.shopname|truncatechars:18}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            
+        </div>
+        {% endif %}
+
+
+
+        <div class="pt-5">
+            <h2 class="text-center">SHOPS</h2>
+        </div>
+    
+        <div id="toggle" style="width:11%;margin-left: 5%;" >
+                <h6 style="padding-left: 32px;font-family: cursive; width: 175px;"  id="toggle" >FILTER BY</h6>
+                <svg xmlns="http://www.w3.org/2000/svg"  style="margin-top: -59px; margin-left: 124px;" width="16" height="16" fill="currentColor"  id="toggle" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                </svg>
+        </div>
+    
+    
+    
+        <div style="display:none;margin-left: 5%;" id="third">
+    
+                <p style="    padding-left: 32px;">shopname:</p>
+                            <form class="d-flex" style="width:100%;" action="{% url 'search' %}" method="get">
+                                <input name='search' class="form-control me-2 magnify" type="search" placeholder="Search shops required..." aria-label="Search" style="background-color: #f5f5f6;border:0px solid #f5f5f6;width: 31%;margin-left: 31px;" required>
+                                <button class="btn btn-outline-dark" type="submit" style="margin-right:11px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form><br>
+                <p style="    padding-left: 32px;">location:</p>
+                            <form action="{% url 'searchlocation' %}" method="get" class="d-flex" style="width:100%; margin-top: -11px;">
+                                <input name="searchlocation" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="background-color: #f5f5f6;border:0px solid #f5f5f6;width: 31%;margin-left: 31px;">
+                                <button class="btn btn-outline-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+        </div>
+
+        {% if addprod %}
+        <div class="row p-5" style="margin-top:16px">
+            {% for i in addprod %}
+            <div class="col-md-3 col-sm-4 mt-5 d-flex justify-content-center">
+                <a href="{% url 'detailprod' i.id  %}" style="text-decoration: none;color: black">
+                    <div class="card bg-light" style="width: auto;border: none;">
+                        {% if i.shopimage1 %}
+                        <img src="{{ i.shopimage1.url}}" style="width: 250px;height: 250px;border-radius: 30px;" class="img-fluid card-img-top" alt="...">
+                        {% endif %}
+                        <div class="card-body">
+                            <p class="card-text text-center">{{i.shopname|truncatechars:18}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+            
+        </div>
+        {% endif %}
+
+
+        {% if a %}
+        <div class="row p-5" style="margin-top: -90px;">
+            {% for i in a %}
+			{% for h in b %}
+			{% if  h.shopname == i.title  %}
+            <div class="col-md-3 col-sm-4 mt-5 d-flex justify-content-center">
+                <a href="{% url 'detailprod' h.id  %}" style="text-decoration: none;color: black">
+                    <div class="card bg-light" style="width: auto;border: none;">
+                        {% if h.shopimage1 %}
+                        <img src="{{ h.shopimage1.url}}" style="width: 250px;height: 250px;border-radius: 30px;" class="img-fluid card-img-top" alt="...">
+                        {% endif %}
+                        <div class="card-body">
+                            <p class="card-text text-center">{{h.shopname|truncatechars:18}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+			{% endfor %}
+            {% endfor %}
+            
+        </div>
+        {% endif %}
+
+        {% if vars %}
+        <div class="row p-5" style="margin-top: -90px;">
+            {% for i in vars %}
+			{% for j in search %}
+			{% if  i == j.shopname  %}
+            <div class="col-md-3 col-sm-4 mt-5 d-flex justify-content-center">
+                <a href="{% url 'detailprod' j.id  %}" style="text-decoration: none;color: black">
+                    <div class="card bg-light" style="width: auto;border: none;">
+                        {% if j.shopimage1 %}
+                        <img src="{{ j.shopimage1.url}}" style="width: 250px;height: 250px;border-radius: 30px;" class="img-fluid card-img-top" alt="...">
+                        {% endif %}
+                        <div class="card-body">
+                            <p class="card-text text-center">{{j.shopname|truncatechars:18}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        {% else %}
+            {% if p is 1 %}
+            <div class="row p-5" style="margin-top: -36px;margin-left: 3%;">
+                <p>the searched shop is not available.please type correctly</p>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+
+
+
+        <div class="row p-5" style="margin-top: -90px;">
+            {% if location%}
+    
+                {% for i in location %}
+                {% for j in searchlocation %}
+                {% if i == j.shopname %}
+                <div class="col-md-3 col-sm-4 mt-5 d-flex justify-content-center">
+                    <a href="{% url 'detailprod' j.id  %}" style="text-decoration: none;color: black">
+                        <div class="card bg-light" style="width: auto;border: none;">
+                            {% if j.shopimage1 %}
+                            <img src="{{ j.shopimage1.url}}" style="width: 250px;height: 250px;border-radius: 30px;" class="img-fluid card-img-top" alt="...">
+                            {% endif %}
+                            <div class="card-body">
+                                <p class="card-text text-center">{{j.shopname|truncatechars:18}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            {% elif district %}    
+                {% for i in district %}
+                {% for j in searchlocation %}
+                {% if i == j.shopname %}
+                <div class="col-md-3 col-sm-4 mt-5 d-flex justify-content-center">
+                    <a href="{% url 'detailprod' j.id  %}" style="text-decoration: none;color: black">
+                        <div class="card bg-light" style="width: auto;border: none;">
+                            {% if j.shopimage1 %}
+                            <img src="{{ j.shopimage1.url}}" style="width: 250px;height: 250px;border-radius: 30px;" class="img-fluid card-img-top" alt="...">
+                            {% endif %}
+                            <div class="card-body">
+                                <p class="card-text text-center">{{j.shopname|truncatechars:18}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                
+            {% else %}
+                {% if p is 2 %}
+                <div class="row p-5" style="margin-top: -36px;margin-left: 3%;">
+                    <p>the searched shop is not available.please type correctly</p>
+                </div>
+                {% endif %}
+    
+            {% endif %}
+            </div>
+
+<!-- 
+
+        {% if district%}
+        <div class="row p-5" style="margin-top: -90px;">
+			{% for i in district %}
+            {% for j in searchlocation %}
+			{% if i == j.shopname %}
+            <div class="col-md-3 col-sm-4 mt-5 d-flex justify-content-center">
+                <a href="{% url 'detailprod' j.id  %}" style="text-decoration: none;color: black">
+                    <div class="card bg-light" style="width: auto;border: none;">
+                        {% if j.shopimage1 %}
+                        <img src="{{ j.shopimage1.url}}" style="width: 250px;height: 250px;border-radius: 30px;" class="img-fluid card-img-top" alt="...">
+                        {% endif %}
+                        <div class="card-body">
+                            <p class="card-text text-center">{{j.shopname|truncatechars:18}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        {% else %}
+            {% if p is 3 %}
+            <div class="row p-5" style="margin-top: -36px;margin-left: 3%;">
+                <p>the searched shop is not available.please type correctly</p>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %} -->
+
+
+
+
+
+
+
+
+    </section>
+    <footer>
+        <div class="row">
+                <div class="row p-5">
+                    <div class="col-md-4">
+                        <h4 class="text-center" id="about">About Us</h4><br><br><br>
+                        <p class="text-center p-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                    </div>
+                    <div class="col-md-2">
+                        <h4 class="text-center">Links</h4><br><br><br>
+                        <ul class="list-unstyled list-inline text-center pt-4">
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-fb mx-1" href="">
+                                    <i class="fab fa-facebook-f"> </i>
+                                </a>
+                            </li><br><br><br><br><br><br>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-tw mx-1" href="">
+                                    <i class="fab fa-twitter"> </i>
+                                </a>
+                            </li><br><br><br><br><br><br>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-gplus mx-1" href="">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li><br>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-center">Our team</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="container">
+                                    <div class="card-wrapper">
+                                        <div id="card" class="card">
+                                            <div class="card-image">
+                                                <img class="img-fluid" src="https://image.ibb.co/dUTfmJ/profile_img.jpg" alt="profile one">
+                                            </div>
+                                            <ul class="social-icons">
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-dribbble"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="details">
+                                                <h2 style="font-size: 25px;">SALMAN<br><span class="job-title">Developer</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="container">
+                                    <div class="card-wrapper">
+                                        <div id="card" class="card">
+                                            <div class="card-image">
+                                                <img class="img-fluid" src="https://image.ibb.co/dUTfmJ/profile_img.jpg" alt="profile one">
+                                            </div>
+                                            <ul class="social-icons">
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-dribbble"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="details">
+                                                <h2 style="font-size: 25px;">BHAGYADEV<br><span class="job-title">Developer</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="container">
+                                    <div class="card-wrapper">
+                                        <div id="card" class="card">
+                                            <div class="card-image">
+                                                <img class="img-fluid" src="https://image.ibb.co/dUTfmJ/profile_img.jpg" alt="profile one">
+                                            </div>
+                                            <ul class="social-icons">
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-dribbble"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="details">
+                                                <h2 style="font-size: 25px;">AJAZ KHAN<br><span class="job-title">Developer</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <div class="footer-copyright text-center py-2" style="background-color: gray;">© 2021 Merchbox. All Rights Reserved.
+            </div>
+                
+               
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>    
+
+
+
+    <script>
+        const targetDiv = document.getElementById("third");
+        const btn = document.getElementById("toggle");
+        btn.onclick = function () {
+            if (targetDiv.style.display !== "none") {
+                targetDiv.style.display = "none";
+            } else {
+                targetDiv.style.display = "block";
+            }
+        };</script>
+
+
+    {% endblock %}

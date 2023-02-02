@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% if k %}
+{% for i in k %}
+{% for j in v %}
+{% if i.shopname == j.shopname %}
+<p>{{j.purchaser}}</p>
+<p>{{j.phonenumber}}</p>
+<p>{{j.housename}}</p>
+<p>{{j.area}}</p>
+<p>{{j.location}}</p>
+<p>{{j.district}}</p>
+<p>{{j.pin}}</p>
+<p>{{j.productname}}</p>
+<p>{{j.productid}}</p>
+<p>{{j.shopname}}</p>
+{% for m in p %}
+{% if m.prod_id == j.productid %}
+{% if m.image1 %}
+<img src="{{m.image1.url}}" alt="Profile Picture" width="100" height="100"><br>
+{% endif %}
+{% endif %}
+{% endfor %}
+
+
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}
+
+{% if vv == 1 %}
+<p>no orders</p>
+{% endif %}
+</body>
+</html>

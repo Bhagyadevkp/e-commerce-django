@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+    <section class="container-fluid">
+        <div style="padding-left: 27px;margin-top: 17px;" id="toggle">
+        <h4 >{{just.shopname}}</h4> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+            </svg>
+            </div>
+        <div style="display:none;box-shadow: 0 0 10px #622020;" id="third">
+                <div class="row p-3 mt-5">
+
+                    <div class="col-md-4">
+                        <div class="container-lg my-3">
+                        <div id="myCarousel" class="carousel slide">
+                            <!-- Carousel indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                <li data-target="#myCarousel" data-slide-to="3"></li>
+                            </ol>
+                            <!-- Wrapper for carousel items -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" style="    background-color: white;">
+                                    {% if just.shopimage1 %}
+                                    <img src="{{just.shopimage1.url}}" alt="First Slide" style="  width: 100%;height: 280px;object-fit: cover;">
+                                    {% endif %}
+
+                                </div>
+                                <div class="carousel-item" style="    background-color: white;">
+
+                                    {% if just.shopimage2 %}
+                                    <img src="{{just.shopimage2.url}}" style="  width: 100%;height: 280px;object-fit: cover;" onerror="this.src='https://semantic-ui.com/images/wireframe/image.png'" style="">
+                                    {% endif %}
+
+
+                                </div>
+                                <div class="carousel-item" style="    background-color: white;">
+                                    {% if just.shopimage3 %}
+                                    <img src="{{just.shopimage3.url}}" style="  width: 100%;height: 280px;object-fit: cover;" onerror="this.src='https://semantic-ui.com/images/wireframe/image.png'" style="">
+                                    {% endif %}
+
+                                </div>
+                                <div class="carousel-item" style="    background-color: white;">
+
+                                    {% if just.shopimage4 %}
+                                    <img src="{{just.shopimage4.url}}" style="  width: 100%;height: 280px;object-fit: cover;" onerror="this.src='https://semantic-ui.com/images/wireframe/image.png'"style="">
+                                    {% endif %}
+
+
+                                </div>
+                            </div>
+                            <!-- Carousel controls -->
+                            <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    </div>
+                    <div class="col-md-8 bg-white" style="border-radius: 20px;">
+                        <h5>SHOP DETAILS</h5>
+                        <p>
+                            {{just.location}}<br>
+                            {{just.city}}<br>
+                            {{just.user}}<br>
+                            {{just.phonenumber}}
+                        </p>
+
+                    </div>
+
+                </div>
+        </div>
+        <div class="row p-5 bg-transpare">
+            <h3 class="" style="padding-top:21px">PRODUCTS</h3>  
+	    {% if detailprodct %}
+
+             {% for i in detailprodct %}
+            <div class="col-md-2 col-sm-4 mt-5">
+                <a href="{% url 'singleproductdetail' i.prod_id %}" style="text-decoration: none;color: black">
+                    <div class="card bg-light" style="width: auto;border: none;">
+                        <img src="{{i.image1.url}}" style="width: 200px;height: 200px;border-radius: 30px;" class="img-fluid card-img-top" alt="...">
+                        <div class="card-body" style="height: 7rem;">
+                            <p class="card-text">{{i.name|truncatechars:18}}  <br>
+			{% if i.offerprice %}
+			<strike>Rs: {{i.price}}</strike><br>
+			 Rs:  {{i.offerprice}}</p>
+			{% else %}
+			 Rs:  {{i.price}}</p>
+			{% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+             {% endfor %}
+            {% else %}
+            <p>this shop is not available</p>
+            {% endif %}
+        </div>
+    </section>
+
+ <footer>
+        <div class="row">
+                <div class="row p-5">
+                    <div class="col-md-4">
+                        <h4 class="text-center" id="about">About Us</h4><br><br><br>
+                        <p class="text-center p-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                    </div>
+                    <div class="col-md-2">
+                        <h4 class="text-center">Links</h4><br><br><br>
+                        <ul class="list-unstyled list-inline text-center pt-4">
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-fb mx-1" href="">
+                                    <i class="fab fa-facebook-f"> </i>
+                                </a>
+                            </li><br><br><br><br><br><br>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-tw mx-1" href="">
+                                    <i class="fab fa-twitter"> </i>
+                                </a>
+                            </li><br><br><br><br><br><br>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-gplus mx-1" href="">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li><br>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-center">Our team</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="container">
+                                    <div class="card-wrapper">
+                                        <div id="card" class="card">
+                                            <div class="card-image">
+                                                <img class="img-fluid" src="https://image.ibb.co/dUTfmJ/profile_img.jpg" alt="profile one">
+                                            </div>
+                                            <ul class="social-icons">
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-dribbble"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="details">
+                                                <h2 style="font-size: 25px;">SALMAN<br><span class="job-title">Developer</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="container">
+                                    <div class="card-wrapper">
+                                        <div id="card" class="card">
+                                            <div class="card-image">
+                                                <img class="img-fluid" src="https://image.ibb.co/dUTfmJ/profile_img.jpg" alt="profile one">
+                                            </div>
+                                            <ul class="social-icons">
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-dribbble"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="details">
+                                                <h2 style="font-size: 25px;">BHAGYADEV<br><span class="job-title">Developer</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="container">
+                                    <div class="card-wrapper">
+                                        <div id="card" class="card">
+                                            <div class="card-image">
+                                                <img class="img-fluid" src="https://image.ibb.co/dUTfmJ/profile_img.jpg" alt="profile one">
+                                            </div>
+                                            <ul class="social-icons">
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fab fa-dribbble"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="details">
+                                                <h2 style="font-size: 25px;">AJAZ KHAN<br><span class="job-title">Developer</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright text-center py-2" style="background-color: gray;">© 2021 Merchbox. All Rights Reserved.
+                </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#myCarousel").carousel({
+		interval : false
+	});
+});
+</script>
+
+<script>
+const targetDiv = document.getElementById("third");
+const btn = document.getElementById("toggle");
+btn.onclick = function () {
+  if (targetDiv.style.display !== "none") {
+    targetDiv.style.display = "none";
+  } else {
+    targetDiv.style.display = "block";
+  }
+};</script>
+
+
+{% endblock %}
